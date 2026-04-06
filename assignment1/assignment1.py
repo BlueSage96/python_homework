@@ -81,3 +81,10 @@ def grade(*args):
         return("Invalid data was provided.")
     
 print(grade)
+
+#Task 6
+def repeat(string, count):
+    for c in range(count):
+        c += 1
+        newString = string * c
+    return newString
