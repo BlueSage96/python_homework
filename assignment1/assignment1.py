@@ -88,3 +88,20 @@ def repeat(string, count):
         c += 1
         newString = string * c
     return newString
+
+print(repeat)
+
+#Task 7
+def student_scores(param, **scores):
+    try:
+        if param == "mean":
+            scoreSum = sum(scores.values()) / len(scores.values())
+            return scoreSum
+        if param == "best":      
+            bestStudent = max(scores, key=scores.get)
+            return bestStudent
+               
+    except TypeError:
+        return("Wrong keyword!")
+    
+print(student_scores)
