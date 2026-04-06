@@ -56,3 +56,28 @@ def data_type_conversion(value, name):
         return (f"You can't convert {value} into a {name}.")
     
 print(data_type_conversion)
+
+#Task 5
+def grade(*args):
+    try:
+        finalGrade = sum(args) / len(args)
+        
+        if finalGrade >= 90:
+            return "A"
+        
+        if finalGrade >= 80 and finalGrade <= 89:
+            return "B"
+        
+        if finalGrade >= 70 and finalGrade <= 79:
+            return "C"
+        
+        if finalGrade >= 60 and finalGrade <= 89:
+            return "D"
+        
+        if finalGrade > 60:
+            return "F"
+        
+    except TypeError:
+        return("Invalid data was provided.")
+    
+print(grade)
