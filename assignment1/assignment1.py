@@ -38,3 +38,21 @@ def calc(first, second, calculate = "multiply"):
         return("You can't multiply those values!")
     
 print(calc)
+
+#Task 4
+def data_type_conversion(value, name):
+    try:
+        match name:
+            case "int":
+                return (int(value))
+        
+            case "float":
+                return (float(value))
+
+            case "str":
+                return (str(value))
+        
+    except ValueError:
+        return (f"You can't convert {value} into a {name}.")
+    
+print(data_type_conversion)
