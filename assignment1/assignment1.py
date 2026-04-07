@@ -1,4 +1,5 @@
 # Write your code here.
+import string
 #Task 1
 def hello():
     helloStr = "Hello!"
@@ -105,3 +106,32 @@ def student_scores(param, **scores):
         return("Wrong keyword!")
     
 print(student_scores)
+
+#Task 8
+def titleize(words):
+    words = words.lower().split()
+    firstWord = words[0].title() #capitalize first word
+    index = 0 #create an index for incrementing
+
+    #Array for filtering little words
+    littleWords = ["a","on","an","the","of","and","is","in"]
+    
+    #result after splitting and filtering and concatenating
+    result = ""
+    for w in words:  
+        index += 1
+        if index == 1:
+            continue
+        #Capitalize the last word no matter what
+        if words.index(w) == len(words) -1:
+            result += " " + w.capitalize()
+            
+            #filter out little words to keep as lowercase
+        elif w in littleWords:
+            result += " " + w
+        else:
+            #after filtering capitalize all other words
+            result += " " + w.capitalize()
+    return firstWord + result #concatenation
+
+print(titleize)
