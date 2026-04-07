@@ -135,3 +135,14 @@ def titleize(words):
     return firstWord + result #concatenation
 
 print(titleize)
+
+#Task 9
+def hangman(secret, guess):
+    finalGuess = ""
+    for s in secret:
+        if s in guess:
+            finalGuess += "" + s
+        else:
+            finalGuess += "_"
+    return finalGuess
+print(hangman)
