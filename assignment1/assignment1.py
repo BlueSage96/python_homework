@@ -146,3 +146,32 @@ def hangman(secret, guess):
             finalGuess += "_"
     return finalGuess
 print(hangman)
+
+#Task 10
+def pig_latin(sentence):
+    vowels = "aeiou"
+    words = sentence.split()
+    result = []
+
+    for word in words:
+        # Rule 1: starts with vowel
+        if word[0] in vowels:
+            result.append(word + "ay")
+        else:
+            index = 0
+
+            # move through consonants
+            while index < len(word):
+                # special case: "qu"
+                if word[index:index+2] == "qu":
+                    index += 2
+                elif word[index] not in vowels:
+                    index += 1
+                else:
+                    break
+
+            # split and rebuild
+            result.append(word[index:] + word[:index] + "ay")
+
+    return " ".join(result)
+print(pig_latin)
