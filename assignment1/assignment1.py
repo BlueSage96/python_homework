@@ -5,13 +5,13 @@ def hello():
     helloStr = "Hello!"
     return helloStr
 
-print(hello)
+print(hello())
 
 #Task 2
 def greet(name):
     return(f"Hello, {name}!")
 
-print(greet)
+print(greet("Brittany"))
 
 #Task 3
 def calc(first, second, calculate = "multiply"):
@@ -28,7 +28,7 @@ def calc(first, second, calculate = "multiply"):
            case "int_divide":
             return int(first/second)
            case "power":
-            return first ^ second
+            return first ** second
            case _:
             return first * second
         
@@ -72,10 +72,10 @@ def grade(*args):
         if finalGrade >= 70 and finalGrade <= 79:
             return "C"
         
-        if finalGrade >= 60 and finalGrade <= 89:
+        if finalGrade >= 60 and finalGrade <= 69:
             return "D"
         
-        if finalGrade > 60:
+        if finalGrade < 60:
             return "F"
         
     except TypeError:
@@ -85,6 +85,7 @@ print(grade)
 
 #Task 6
 def repeat(string, count):
+    newString = ""
     for c in range(count):
         c += 1
         newString = string * c
@@ -111,16 +112,15 @@ print(student_scores)
 def titleize(words):
     words = words.lower().split()
     firstWord = words[0].title() #capitalize first word
-    index = 0 #create an index for incrementing
 
     #Array for filtering little words
     littleWords = ["a","on","an","the","of","and","is","in"]
     
     #result after splitting and filtering and concatenating
     result = ""
-    for w in words:  
-        index += 1
-        if index == 1:
+    for i, w in enumerate(words):  
+        i += 1
+        if i == 1:
             continue
         #Capitalize the last word no matter what
         if words.index(w) == len(words) -1:
