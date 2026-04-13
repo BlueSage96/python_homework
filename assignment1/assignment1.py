@@ -5,13 +5,13 @@ def hello():
     helloStr = "Hello!"
     return helloStr
 
-print(hello())
+hello()
 
 #Task 2
 def greet(name):
     return(f"Hello, {name}!")
 
-print(greet("Brittany"))
+greet("Brittany")
 
 #Task 3
 def calc(first, second, calculate = "multiply"):
@@ -38,7 +38,7 @@ def calc(first, second, calculate = "multiply"):
     except TypeError:
         return("You can't multiply those values!")
     
-print(calc)
+calc(1,2,"add")
 
 #Task 4
 def data_type_conversion(value, name):
@@ -56,7 +56,7 @@ def data_type_conversion(value, name):
     except ValueError:
         return (f"You can't convert {value} into a {name}.")
     
-print(data_type_conversion)
+data_type_conversion("int", int(10))
 
 #Task 5
 def grade(*args):
@@ -81,17 +81,16 @@ def grade(*args):
     except TypeError:
         return("Invalid data was provided.")
     
-print(grade)
+grade("A")
 
 #Task 6
 def repeat(string, count):
     newString = ""
     for c in range(count):
-        c += 1
-        newString = string * c
+        newString += string
     return newString
 
-print(repeat)
+repeat("Testing", 4)
 
 #Task 7
 def student_scores(param, **scores):
@@ -106,7 +105,7 @@ def student_scores(param, **scores):
     except TypeError:
         return("Wrong keyword!")
     
-print(student_scores)
+student_scores(max("best"))
 
 #Task 8
 def titleize(words):
@@ -119,11 +118,10 @@ def titleize(words):
     #result after splitting and filtering and concatenating
     result = ""
     for i, w in enumerate(words):  
-        i += 1
-        if i == 1:
+        if i == 0:
             continue
         #Capitalize the last word no matter what
-        if words.index(w) == len(words) -1:
+        if i == len(words) -1:
             result += " " + w.capitalize()
             
             #filter out little words to keep as lowercase
@@ -134,7 +132,7 @@ def titleize(words):
             result += " " + w.capitalize()
     return firstWord + result #concatenation
 
-print(titleize)
+titleize("gone with the wind")
 
 #Task 9
 def hangman(secret, guess):
@@ -145,7 +143,7 @@ def hangman(secret, guess):
         else:
             finalGuess += "_"
     return finalGuess
-print(hangman)
+hangman("dream", "d__a_")
 
 #Task 10
 def pig_latin(sentence):
@@ -174,4 +172,4 @@ def pig_latin(sentence):
             result.append(word[index:] + word[:index] + "ay")
 
     return " ".join(result)
-print(pig_latin)
+pig_latin("Spread love not war")
