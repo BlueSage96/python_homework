@@ -12,10 +12,11 @@ def diary():
         file.write(prompt1 + "\n")  
         prompt2 = ""
         
-        while prompt1 != "done for now" and prompt2 != "done for now":
-            prompt2 = input("What else? \n") 
-            file.write(prompt2 + "\n") 
-            
+        while prompt2 != "done for now":
+            prompt2 = input("What else? \n")
+            if prompt2 != "done for now":
+                file.write(prompt2 + "\n")
+                    
         else:
             file.close()
             
@@ -97,7 +98,7 @@ def employee_dict(row):
       em_dict[key] = value
     return em_dict
 
-all_employees_dict = employee_dict(employees["rows"][0])
+single_employee_dict = employee_dict(employees["rows"][0])
 
 #Task 9
 def all_employees_dict():
@@ -120,6 +121,7 @@ def set_that_secret(secret):
     custom_module.set_secret(secret)
 
 set_that_secret("secret")
+print(set_that_secret)
 
 #Task 12
 def read_dict(file_path):
@@ -132,8 +134,8 @@ def read_dict(file_path):
         
         for row in reader:
            rows.append(tuple(row))
-           minute_dict["fields"] = fields
-           minute_dict["rows"] = rows
+        minute_dict["fields"] = fields
+        minute_dict["rows"] = rows
     return minute_dict
 
 def read_minutes():
@@ -167,16 +169,19 @@ minutes_list = create_minutes_list()
 
 #Task 15
 def write_sorted_list():
-    #sort list from task 14
     sorted_minutes_list = sorted(minutes_list, key=lambda x: x[1])
-    
-    #convert datetime back to string
+
     new_mins_list = list(
-        map(lambda x: (x[0], datetime.strftime(x[1],"%B %d, %Y" )), sorted_minutes_list)
+        map(lambda x: (x[0], datetime.strftime(x[1], "%B %d, %Y")), sorted_minutes_list)
     )
-    #write to CSV
+
+    mins1, mins2 = read_minutes()  # unpack properly
+
     with open("minutes.csv", "w", newline="") as file:
         writer = csv.writer(file)
-        writer.writerow(minutes1[0]["fields"])
-        writer.writerow(new_mins_list)
+        writer.writerow(mins1["fields"])  # header
+
+        for row in new_mins_list:
+            writer.writerow(row)
+
     return new_mins_list
