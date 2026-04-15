@@ -24,9 +24,9 @@ def diary():
             stack_trace.append(f"File: {trace[0]}, Line: {trace[1]}, Func.Name: {trace[2]}, Message: {trace[3]}")
             print(f"Exception type: {type(e).__name__}")
             message = str(e)
-            if message:
-               print(f"Exception message: {message}")
-               print(f"Stack trace: {stack_trace}")
+        if message:
+            print(f"Exception message: {message}")
+            print(f"Stack trace: {stack_trace}")
 diary()
 
 #Task 2
@@ -90,6 +90,7 @@ sort_by_last_name()
 def employee_dict(row):
     em_dict = {}
     for r in range(1, len(row)):
+      #skips index 0
       key = employees["fields"][r]
       value = row[r]
       em_dict[key] = value
@@ -118,7 +119,7 @@ def set_that_secret(secret):
     custom_module.set_secret(secret)
 
 set_that_secret("secret")
-print(custom_module.set_secret)
+print(custom_module.secret)
 
 #Task 12
 def read_dict(file_path):
@@ -140,7 +141,7 @@ def read_minutes():
     mins2 = read_dict("../csv/minutes2.csv")
     return mins1, mins2
 
-minutes1 = read_minutes()
+minutes1, minutes2 = read_minutes()
 
 #Task 13
 def create_minutes_set():
