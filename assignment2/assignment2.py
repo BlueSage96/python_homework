@@ -119,3 +119,25 @@ def set_that_secret(secret):
     custom_module.set_secret(secret)
 
 set_that_secret("secret")
+
+#Task 12
+def read_dict(file_path):
+    minute_dict = {}
+    
+    with open(file_path, "r") as file:
+        reader = csv.reader(file)
+        fields = next(reader) #first row
+        rows = []
+        
+        for row in reader:
+           rows.append(tuple(row))
+           minute_dict["fields"] = fields
+           minute_dict["rows"] = rows
+    return minute_dict
+
+def read_minutes():
+    mins1 = read_dict("../csv/minutes1.csv")
+    mins2 = read_dict("../csv/minutes2.csv")
+    return mins1, mins2
+
+minutes1 = read_minutes()
