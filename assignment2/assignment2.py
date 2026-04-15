@@ -164,3 +164,19 @@ def create_minutes_list():
     return new_mins_list
 
 minutes_list = create_minutes_list()
+
+#Task 15
+def write_sorted_list():
+    #sort list from task 14
+    sorted_minutes_list = sorted(minutes_list, key=lambda x: x[1])
+    
+    #convert datetime back to string
+    new_mins_list = list(
+        map(lambda x: (x[0], datetime.strftime(x[1],"%B %d, %Y" )), sorted_minutes_list)
+    )
+    #write to CSV
+    with open("minutes.csv", "w", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow(minutes1[0]["fields"])
+        writer.writerow(new_mins_list)
+    return new_mins_list
