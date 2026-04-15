@@ -61,3 +61,11 @@ def first_name(rowNum):
     return employees["rows"][rowNum][col]
 
 first_name(1)
+
+#Task 5
+def employee_find(employee_id):
+    def employee_match(row):
+        #returns true if there's a match
+        return int(row[employee_id_column]) == employee_id
+    matches = list(filter(employee_match, employees["rows"]))
+    return list(matches)
