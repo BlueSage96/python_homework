@@ -1,5 +1,5 @@
 import traceback
-
+import csv
 #Task 1
 def diary():
     with open("diary.txt", "a") as file:
@@ -26,3 +26,26 @@ def diary():
                print(f"Exception message: {message}")
                print(f"Stack trace: {stack_trace}")
 diary()
+
+#Task 2
+def read_employees():
+    employeeDict = {}
+    employeeList = []
+    
+    with open("../csv/employees.csv", "r") as file:
+        try:
+            reader = csv.reader(file)
+            #first line goes to "fields"
+            for i, row in enumerate(reader):
+                if i == 0:
+                    employeeDict["fields"] = row
+                else:
+                    employeeList.append(row)
+                    employeeDict["rows"] = employeeList
+
+            return employeeDict
+        except Exception as e:
+            print(f"An exception has occurred: {e}")
+    
+#calls function and stores the returned value
+employees = read_employees()
