@@ -17,9 +17,6 @@ def diary():
             if prompt2 != "done for now":
                 file.write(prompt2 + "\n")
                     
-        else:
-            file.close()
-            
       except Exception as e:
         trace_back = traceback.extract_tb(e.__traceback__)
         stack_trace = list()
@@ -34,21 +31,21 @@ diary()
 
 #Task 2
 def read_employees():
-    employeeDict = {}
-    employeeList = []
+    employee_dict = {}
+    employee_list = []
     
     with open("../csv/employees.csv", "r") as file:
         try:
             reader = csv.reader(file)
             #first line goes to "fields"
+            employee_dict["rows"] = employee_list
             for i, row in enumerate(reader):
                 if i == 0:
-                    employeeDict["fields"] = row
+                    employee_dict["fields"] = row
                 else:
-                    employeeList.append(row)
-                    employeeDict["rows"] = employeeList
-
-            return employeeDict
+                    employee_list.append(row)
+                  
+            return employee_dict
         except Exception as e:
             print(f"An exception has occurred: {e}")
     
@@ -121,7 +118,7 @@ def set_that_secret(secret):
     custom_module.set_secret(secret)
 
 set_that_secret("secret")
-print(set_that_secret)
+print(custom_module.set_secret)
 
 #Task 12
 def read_dict(file_path):
