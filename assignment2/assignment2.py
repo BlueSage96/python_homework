@@ -49,3 +49,8 @@ def read_employees():
     
 #calls function and stores the returned value
 employees = read_employees()
+
+#Task 3
+def column_index(index):
+    return employees["fields"].index(index)
+employee_id_column = column_index("employee_id")
