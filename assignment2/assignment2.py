@@ -54,3 +54,10 @@ employees = read_employees()
 def column_index(index):
     return employees["fields"].index(index)
 employee_id_column = column_index("employee_id")
+
+#Task 4
+def first_name(rowNum):
+    col = column_index("first_name")
+    return employees["rows"][rowNum][col]
+
+first_name(1)
