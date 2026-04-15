@@ -1,5 +1,7 @@
 import traceback
 import csv
+import os
+
 #Task 1
 def diary():
     with open("diary.txt", "a") as file:
@@ -106,3 +108,7 @@ def all_employees_dict():
     return em_dict
 
 all_employees_dict()
+
+#Task 10
+def get_this_value():
+     return os.environ.get("THISVALUE")
