@@ -83,3 +83,14 @@ def sort_by_last_name():
     return employees["rows"]
 
 sort_by_last_name()
+
+#Task 8
+def employee_dict(row):
+    em_dict = {}
+    for r in range(1, len(row)):
+      key = employees["fields"][r]
+      value = row[r]
+      em_dict[key] = value
+    return em_dict
+
+all_employees_dict = employee_dict(employees["rows"][0])
