@@ -94,3 +94,15 @@ def employee_dict(row):
     return em_dict
 
 all_employees_dict = employee_dict(employees["rows"][0])
+
+#Task 9
+def all_employees_dict():
+    em_dict = {}
+    row = employees["rows"]
+    for r in row:
+      key = r[0]
+      value = employee_dict(r)
+      em_dict[key] = value
+    return em_dict
+
+all_employees_dict()
