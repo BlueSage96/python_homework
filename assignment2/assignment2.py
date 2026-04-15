@@ -141,3 +141,15 @@ def read_minutes():
     return mins1, mins2
 
 minutes1 = read_minutes()
+
+#Task 13
+def create_minutes_set():
+    min1, min2 = read_minutes()  
+    min1_set = min1["rows"]
+    min2_set = min2["rows"]
+    minutes_set = {}
+    
+    minutes_set = set(min1_set + min2_set)
+    return minutes_set
+
+minutes_set = create_minutes_set()
