@@ -1,0 +1,36 @@
+this string would be logged
+function: say_hey
+positional parameters: ()
+keyword parameters: {}
+return: None 
+
+this string would be logged
+function: pos_args
+positional parameters: (3, 4, 5)
+keyword parameters: {}
+return: True 
+
+this string would be logged
+function: key_args
+positional parameters: ()
+keyword parameters: {'a': 1, 'b': 2}
+return: <function logger_decorator at 0x1015f60c0> 
+
+this string would be logged
+function: say_hey
+positional parameters: ()
+keyword parameters: {}
+return: None 
+
+this string would be logged
+function: pos_args
+positional parameters: (3, 4, 5)
+keyword parameters: {}
+return: True 
+
+this string would be logged
+function: key_args
+positional parameters: ()
+keyword parameters: {'a': 1, 'b': 2}
+return: <function logger_decorator at 0x10294e0c0> 
+
