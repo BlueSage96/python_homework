@@ -7,6 +7,7 @@ def type_converter(type_of_output):
     return wrapper
   return decorator
 
+@type_converter(str)
 def return_int():
     return 5
 

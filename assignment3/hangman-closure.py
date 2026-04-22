@@ -10,6 +10,7 @@ def make_hangman(secret_word):
                 final_guess += s
             else:
                 final_guess += "_"
+        print(f"Word: {final_guess}")
         #check if word's fully guessed
         if final_guess == secret_word:
             return True
