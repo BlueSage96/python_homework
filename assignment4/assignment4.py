@@ -1,9 +1,7 @@
 
 import pandas as pd
-#Delete Notes.txt when assignment's complete
-
 #Task 1
-#Dictionary
+
 data = {
     'Name': ['Alice', 'Bob', 'Charlie'],
      'Age': [25,30,35],
@@ -37,7 +35,15 @@ task1_older["Age"] = pd.Series(updated_task1_older)
 task1_older.to_csv("employees.csv", index=False)
 
 #Task 2
+task2_employees = pd.read_csv("employees.csv")
+# print(task2_employees)
+json_employees = pd.read_json("additional_employees.json")
+# print(json_employees)
+
+more_employees = pd.concat([task2_employees, json_employees],ignore_index=True)
+# print(more_employees)
 
 #Task 3
 
 #Task 4
+#Uncomment print statements after all tests pass!
