@@ -108,26 +108,3 @@ def test_department_uppercase():
 def test_hire_date_notNAT():
     nat_count = a4.clean_data['Hire Date'].isna().sum()
     assert nat_count == 0
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
