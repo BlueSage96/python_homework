@@ -1,7 +1,7 @@
 
 import pandas as pd
-#Task 1
 
+#Task 1
 data = {
     'Name': ['Alice', 'Bob', 'Charlie'],
      'Age': [25,30,35],
@@ -44,6 +44,14 @@ more_employees = pd.concat([task2_employees, json_employees],ignore_index=True)
 # print(more_employees)
 
 #Task 3
+first_three = more_employees.head(3)
+# print(first_three)
+last_two = more_employees.tail(2)
+# print(last_two)
+
+employee_shape = more_employees.shape
+# print(employee_shape)
+more_employees.info()
 
 #Task 4
 #Uncomment print statements after all tests pass!
