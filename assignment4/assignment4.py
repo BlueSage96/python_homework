@@ -1,7 +1,7 @@
-
 import pandas as pd
 
-#Task 1
+#Task 1#
+# Uncomment print statements after all tests pass!
 data = {
     'Name': ['Alice', 'Bob', 'Charlie'],
      'Age': [25,30,35],
@@ -51,7 +51,28 @@ last_two = more_employees.tail(2)
 
 employee_shape = more_employees.shape
 # print(employee_shape)
-more_employees.info()
+# more_employees.info()
 
 #Task 4
-#Uncomment print statements after all tests pass!
+dirty_data = pd.read_csv("dirty_data.csv")
+# print(dirty_data)
+clean_data = dirty_data.copy()
+
+clean_data.drop_duplicates(inplace=True)
+clean_data["Age"] = pd.to_numeric(clean_data["Age"], downcast="integer", errors="coerce")
+
+#Replace unknown values
+clean_data["Salary"] = pd.to_numeric(clean_data["Salary"].replace("unknown, n/a", pd.NA), errors="coerce")
+median_salary = clean_data["Salary"].median()
+clean_data["Salary"] = clean_data["Salary"].fillna(median_salary)
+
+fill_age = clean_data["Age"].mean()
+clean_data["Age"] = clean_data["Age"].fillna(fill_age)
+
+#convert Hire Date to Datetime
+clean_data["Hire Date"] = pd.to_datetime(clean_data["Hire Date"], format="mixed")
+
+#Strip whitespace & upper case
+clean_data["Name"] = clean_data["Name"].str.strip().str.upper()
+clean_data["Department"] = clean_data["Department"].str.strip().str.upper()
+print(clean_data)
