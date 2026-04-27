@@ -63,7 +63,7 @@ clean_data.drop_duplicates(inplace=True)
 clean_data["Age"] = pd.to_numeric(clean_data["Age"], downcast="integer", errors="coerce")
 
 #Replace unknown values
-clean_data["Salary"] = pd.to_numeric(clean_data["Salary"].replace("unknown, n/a", pd.NA), errors="coerce")
+clean_data["Salary"] = pd.to_numeric(clean_data["Salary"].replace(["unknown", "n/a"], pd.NA), errors="coerce")
 median_salary = clean_data["Salary"].median()
 clean_data["Salary"] = clean_data["Salary"].fillna(median_salary)
 
