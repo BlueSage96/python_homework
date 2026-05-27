@@ -63,14 +63,14 @@ try:
         final = pd.DataFrame(results)
         print(final)
         
-        #Task 4
-        #write to csv
-        
-        final.to_csv("assignment8/get_books.csv")
-        
-        # #write to json
-        with open("assignment8/get_books.json","w") as json_file:
-            json.dump(results,json_file,indent=4)
+    #Task 4
+    #write to csv
+    
+    final.to_csv("get_books.csv", index=False)
+    
+    # #write to json
+    with open("get_books.json","w") as json_file:
+        json.dump(results,json_file,indent=4)
             
 except Exception as e:
     print(f"An exception occurred: {type(e).__name__}{e}")

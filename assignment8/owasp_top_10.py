@@ -14,7 +14,7 @@ try:
     options.add_argument('--disable-gpu')  # Optional, recommended for Windows
     options.add_argument('--window-size=1920x1080')  # Optional, set window size
 
-    driver.get("https://owasp.org/Top10/2025/")
+    driver.get("https://owasp.org/Top10/2025/") #original url has changed so I have to use this one
     title = driver.title # Find the title.
     print(f"Title: {title}")
 
@@ -33,9 +33,6 @@ try:
             hrefs = titles.get_attribute('href')
         except:
             print("Incorrect titles and links!")
-            
-        final_hrefs = []
-        final_hrefs.append(hrefs)
 
         # place title & href links in dict
         top_ten.append({
@@ -44,10 +41,16 @@ try:
         })
         print(top_ten)
         
-        #save to csv file:
-        with open("assignment8/owasp_top_10.csv","a",newline="") as file:
-            writer = csv.writer(file)
-            writer.writerow(top_ten)
+    #save to csv file:
+    with open("owasp_top_10.csv","w",newline="") as file:
+        writer = csv.writer(file)
+
+        # header row
+        writer.writerow(["Title","Hrefs"])
+
+        # data rows
+        for ten in top_ten:
+            writer.writerow([ten["Title"], ten["Hrefs"]])
             
 except Exception as e:
     print(f"An exception occurred: {type(e).__name__}{e}")
