@@ -60,12 +60,11 @@ try:
             "Format-Year": get_format_year
         })
         
-        final = pd.DataFrame(results)
-        print(final)
+    final = pd.DataFrame(results)
+    print(final)
         
     #Task 4
     #write to csv
-    
     final.to_csv("get_books.csv", index=False)
     
     # #write to json
