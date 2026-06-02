@@ -3,9 +3,9 @@ import sqlite3
 #Task 1 - create Magazines database
 #Task 2 - create tables
 #Task 3 - populate tables
-
+#Task 4 - SQL Queries (below)
 def main():
-    #Functions for each table
+    #Task 3 - functions for each table
     def create_publisher (cursor, name, year):
         cursor.execute("SELECT * FROM Publisher WHERE name = ?",(name,)) #search db
         results = cursor.fetchall() #Get results
@@ -57,7 +57,7 @@ def main():
             conn.execute("PRAGMA foreign_keys = 1") #turns on foreign key constraint
             cursor = conn.cursor()
             
-            #create tables
+            #Task 2 - create tables
             cursor.execute("""
             CREATE TABLE IF NOT EXISTS Publisher (
                 publisher_id INTEGER PRIMARY KEY,
@@ -101,6 +101,7 @@ def main():
         except KeyboardInterrupt: #Handle Ctrl-C (Interrupt)
             print("\nCommand canceled.")
             
+        #Task 3 
         # #Create publishers
         create_publisher(cursor, "Times", 2009)
         create_publisher(cursor,"Life", 2012)
@@ -120,6 +121,26 @@ def main():
         create_subscription(cursor, subscriber_id = 2, magazine_id = 1, expiration_date = "07/08/2027")
         create_subscription(cursor, subscriber_id = 3, magazine_id = 2, expiration_date = "03/08/2034")
         create_subscription(cursor, subscriber_id = 1, magazine_id = 3, expiration_date = "01/05/2031")
+        
+        #Task 4
+        # 1.
+        cursor.execute("SELECT * FROM Subscribers")
+        rows = cursor.fetchall()
+        for row in rows:
+            print(f"All subscribers: {row}")
+            
+        # 2.
+        cursor.execute("SELECT * FROM Magazines ORDER BY name")
+        rows = cursor.fetchall()
+        for row in rows:
+            print(f"Order magazines: {row}")
+            
+        # 3.
+        cursor.execute("SELECT * FROM Magazines INNER JOIN Publisher ON Magazines.publisher_id = Publisher.publisher_id WHERE Publisher.name = 'New York Times'")
+        rows = cursor.fetchall()
+        for row in rows:
+            print(f"Publisher: {row}")
+            
         conn.commit()
         
 if __name__ == "__main__":
