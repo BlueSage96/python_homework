@@ -52,7 +52,7 @@ def main():
             print(f"Subscription already exist in the database!")
 
     # connect to SQLite database
-    with sqlite3.connect("../db/Magazines.db") as conn:
+    with sqlite3.connect("../db/magazines.db") as conn:
         try:
             conn.execute("PRAGMA foreign_keys = 1") #turns on foreign key constraint
             cursor = conn.cursor()
@@ -96,10 +96,8 @@ def main():
             """)
             print("Table created successfully")
             
-        except EOFError: #Handle Ctrl-D (EOF) gracefully
-            print("\nExiting...") 
-        except KeyboardInterrupt: #Handle Ctrl-C (Interrupt)
-            print("\nCommand canceled.")
+        except sqlite3.Error: #Handle Ctrl-D (EOF) gracefully
+            print("\nAn error has occurred...") 
             
         #Task 3 
         # #Create publishers
