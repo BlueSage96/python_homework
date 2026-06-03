@@ -12,8 +12,8 @@ with sqlite3.connect("../db/lesson.db") as conn:
     summary['total'] = summary['quantity'] * summary['price']
     print("Total:\n",summary.head(5))
     
-    summary.groupby('product_id').agg({"line_item_id":"count","total":"sum","product_name":"first"})
-    print("Groupby:\n", summary.head(5))
+    grouped = summary.groupby('product_id').agg({"line_item_id":"count","total":"sum","product_name":"first"})
+    print("Groupby:\n", grouped.head(5))
     
-    summary.sort_values(by="product_name",inplace=True)
-    summary.to_csv("order_summary.csv",index=False)
+    grouped.sort_values(by="product_name",inplace=True)
+    grouped.to_csv("order_summary.csv",index=False)
