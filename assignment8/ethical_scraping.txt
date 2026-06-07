@@ -1,0 +1,31 @@
+Task 5
+
+1. Which section of the website are restricted for crawling?
+
+A huge portion of the file blocks search engines and bots from indexing some of the below:
+* deletion of discussions,
+* arbitration pages,
+* admin noticeboards,
+* user disputes,
+* moderation discussions
+
+Disallow: /w/
+Disallow: /api/
+Disallow: /wiki/Special:
+
+
+2. Are there specific rules for certain user agents?
+
+Delays should be used between requests.
+
+* Copying the entire site.
+Some bots are blocked with Disallow: /:
+* Teleport
+* HTTrackt
+* WebCopier
+* Offline Explorer
+
+3. Reflect on why websites use robots.txt
+
+There are a lot of people who do not care about integrity and would steal other people's hard
+work. Having "robots.txt" is a promission slip to gather the data respectfully. 
