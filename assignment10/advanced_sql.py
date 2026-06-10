@@ -24,11 +24,11 @@ with sqlite3.connect("../db/lesson.db") as conn:
             
             #Task 2
             task2 = cursor.execute("""
-                  SELECT customer_name, average_price
+                  SELECT customer_name, average_total_price
                   FROM customers
                   LEFT JOIN (    
                         SELECT  orders.customer_id as customer_id_b,
-                                avg(c.total_price) as average_price
+                                avg(c.total_price) as average_total_price
                         FROM    orders
                         LEFT JOIN (
                                 SELECT      line_items.order_id,
@@ -84,7 +84,7 @@ with sqlite3.connect("../db/lesson.db") as conn:
                     (order_id, product_id, quantity)
                     VALUES (?, ?, ?)
                 """, (order_id, product[0], 10))
-
+                conn.commit()
             task3 = cursor.execute("""
                 SELECT line_items.line_item_id,
                     line_items.quantity,
@@ -99,7 +99,7 @@ with sqlite3.connect("../db/lesson.db") as conn:
                 print(f"Task 3: {row} \n")
                 
             task4 = cursor.execute("""
-                 SELECT first_name, last_name, employees.employee_id, count(order_id) as all_orders
+                 SELECT  employees.employee_id, first_name, last_name, count(order_id) as all_orders
                 FROM employees
                 JOIN  orders ON employees.employee_id = orders.employee_id
                 GROUP BY employees.employee_id
