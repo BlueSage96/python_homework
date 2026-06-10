@@ -19,8 +19,8 @@ with sqlite3.connect("../db/lesson.db") as conn:
             LIMIT 5;
             """)
             
-            # for row in task1:
-            #     print(f"Task 1: {row}")
+            for row in task1:
+                print(f"Task 1: {row} \n")
             
             #Task 2
             task2 = cursor.execute("""
@@ -44,8 +44,8 @@ with sqlite3.connect("../db/lesson.db") as conn:
                    ) as b
                  ON customers.customer_id = b.customer_id_b;                 
             """)
-            # for row in task2:
-            #     print(f"Task 2: {row}")
+            for row in task2:
+                print(f"Task 2: {row} \n")
             
             customer = cursor.execute("""
                 SELECT customer_id, customer_name
@@ -96,7 +96,18 @@ with sqlite3.connect("../db/lesson.db") as conn:
             """, (order_id,))
             
             for row in task3:
-                print(row)
+                print(f"Task 3: {row} \n")
+                
+            task4 = cursor.execute("""
+                 SELECT first_name, last_name, employees.employee_id, count(order_id) as all_orders
+                FROM employees
+                JOIN  orders ON employees.employee_id = orders.employee_id
+                GROUP BY employees.employee_id
+                HAVING all_orders > 5                  
+            """)
+            
+            for row in task4:
+                print(f"Task 4: {row}")
                 
         except sqlite3.Error as e:
             print(f"\nSQLite error: {e}")
