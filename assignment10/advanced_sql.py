@@ -67,7 +67,6 @@ with sqlite3.connect("../db/lesson.db") as conn:
                   WHERE first_name = 'Miranda' AND last_name = 'Harris'                      
             """).fetchone()
             
-
             order = cursor.execute("""
                 INSERT INTO orders
                 (customer_id, employee_id)
@@ -84,7 +83,7 @@ with sqlite3.connect("../db/lesson.db") as conn:
                     (order_id, product_id, quantity)
                     VALUES (?, ?, ?)
                 """, (order_id, product[0], 10))
-                conn.commit()
+            conn.commit()
             task3 = cursor.execute("""
                 SELECT line_items.line_item_id,
                     line_items.quantity,
