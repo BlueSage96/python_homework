@@ -1,0 +1,6 @@
+One of the biggest challenges I had was how to use XPATH. I experimented with 
+various css selectors until I realized I only needed it for the "h3" and 
+"ol" selectors. Then, I had to figured out what types of XPATH I needed
+so I had to do research. The h3 one was easy ("//h3) but I had to dig deeper
+for one that I can use on "ol". After that, the steps were similar to task 3 step 4.
+Source: https://css2xpath.github.io
